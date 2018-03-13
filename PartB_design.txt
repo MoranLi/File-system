@@ -1,0 +1,56 @@
+/*
+Names: Yukun Li, Yuhan Hu 
+NSID : yul040, yuh347
+Std# : 11173592, 11212253
+Group: group07
+*/
+
+
+**************How to run****************
+1. make
+2. Program accept 4 parameters
+	dataLen: the length is gonna to write and reed into file system 
+		s for short
+		m for medium
+		l for long
+	reader number: how many reader threads
+	writer number: how many writer threads
+	BLOCK_SIZE: the BLOCK_SIZE
+		s for 512
+		m for 1024
+		l for 2048
+3. Example ./final s 1 1 s
+   This means run final with short dataLen, 1 reader thread, 1 writer thread, long BLOCK_SIZE
+
+************ Total Design ***********************
+1. There are 4 variables as parameters
+2. I use control variate method to set parameters.
+3. Read time and wait time are what we concern, so
+4. Each time we run, print out the read wait time and write wait time for analysis
+5. For each experiment, I did it for 5 times then get the average time for analysis
+
+************* Implementation Design *****************
+char *files[4]: There are 4 different file names.
+char *dirs[5]: There are 5 different directory names.
+
+There are 3 different functions for threads to run
+	1. reader thread
+	2. writer thread
+	3. directory thread 
+
+reader thread:
+	1. randonly pick up a file names from files
+	2. record the start time
+	3. read from disk
+	4. record the finish time
+	5. add difference time to readWait;
+write thread:
+	1. randonly pick up a file names from files
+	2. record the start time
+	3. write to disk
+	4. record the finish time
+	5. add difference time to readWait;
+directory thread:
+	1. randonly pick up a directory operation and a directory name
+	2. do this operation on the directory name
+	3. This won't affect reader writer time

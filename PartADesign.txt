@@ -1,0 +1,108 @@
+// Names: Yukun Li, Yuhan Hu
+// NSID : yul040, yuh347
+// Std# : 11173592, 11212253
+// Group: group07
+
+
+******Core Files for file system**************** 
+1. block.h
+2. fileDisk.h
+3. fileDisk.c
+4. my_fs.h
+5. my_fs.c
+6. filesys-sim-monitor.c
+7. filesys-sim-monitor.h
+8. filesys-sim-threads.c
+9. Makefile
+
+*************************File system structure design************************
+Struct Inode{
+	type: the file is a dictonary or file
+	parent: the parent dictonary id of file
+	name: name of file
+	size: number of char in file / number of file in dictonary (maximum 4096 char per file)
+	direct: array contain all datanode id
+}
+Struct sb{
+	numDataBlock: number of total data block in file system,  
+	numInodeBlock: number of total inode block in file system, 
+	numFreeDataBlock: number of remaining data block available for add a data block
+	numFreeInodeBlock: number of remaining Innode block available for add a file
+	inodeStart: start point of inode in whole block, should be 2(0 for superblock and 1 for root)		
+	dataStart: start point of data block in whole block			
+	bitMap[TOTAL_BLOCK_NUM]: bitmap using 0 for not use and 1 for use to show the usage of whole file system	
+}
+Struct threadInfo{
+	curBlockNum: recording the current directory of this thread
+	openbit: array recording all the file number been open by this thread
+	seek_ptr: array recording the seek_ptr of all files by this thread
+}
+************************File system implementation***************************
+
+fileDisk.c: all disk operation used by file operations
+	initDisk(): malloc the memory which large enough for file system
+	readInode(): copy Inode data from memory to a outside pointer
+	writeInode(): copy Inode data from a outside pointer to memory
+	readSeekData(): copy data in datablock start form seek_ptr in memeory to a outside pointer
+	writeSeekData(): copy data in a outside pointer to datablock in memeory and start write at seek_ptr
+	clockDisk(): free memory allocated
+	getSuper(): get super block info
+	writeSuper(): write data to super block
+	my_mkfs(): initialize the whole file system
+	nextFreeBlock(): return number repersent next free block
+	addElement(): add one element to parent directonary record
+	redElement(): reduce one element to parent directonary record
+	setBit(): set bitmap to repersent the block is used/unused
+	getbit(): get form bitmap for a block is used or not
+	name2dir(): return block number of dirctonary and number in parent dictonary`s direct array
+	name2file(): return block number of file and number in parent dictonary`s direct array
+
+my_fs.c: file operation implement
+	my_mkdir: make a dirtonary in file system,
+		fail if current dictonary is deleted / same name dictonary exist / not more free inode block remain
+	my_cd: change curBlockNum of threadInfo input 
+		if current directory not exist, go to root
+		if input is .., go to parent
+		if input direct name not exist is curent directory, fail
+	my_rmdir: remove a directory in side current directonary
+		fail if current dictonary is deleted / dictonary with given name not exist in curreny directory / directonary with given name is not empty
+	my_open: set a file to open / create a new file if given file name not exist
+		fail if current dictonary is deleted
+	my_close: set a file to close
+		fail if current dictonary is deleted / file with given name not exist in curreny directory / file is already close
+	my_rm: remove a file from disk by set bitmap and redElement 
+		fail if current dictonary is deleted / file with given name not exist in curreny directory / bitmap do not ahve record for that file
+	my_seek: set a file`s seek_ptr of given threadInfo
+		fail if current dictonary is deleted / file with given name not exist in curreny directory/ file is not open
+	my_read: read data from file start from seek_ptr
+		fail if current dictonary is deleted / file with given name not exist in curreny directory/ file is not open/ file size <= 0
+	my_write: write data to file start from seek_ptr
+		fail if current dictonary is deleted / file with given name not exist in curreny directory/ file is not open
+		
+filesys-sim-monitor.c: monitor implement
+	StartRead(): start read a file, wait when last write finish
+	StopRead(): stop read a file, signal writer can start write
+	StartWrite(): start write a file, wait when last read finish
+	StopWrite(): stop write a file, signal reader can start write
+
+filesys-sim-threads.c: thread implement and test for monitor work
+	init(): init process info needed by a process to read/ write in file system
+	reader(): reader process keep try to read a random selected file form given array and print result if there is data in file
+		each time loop run open first, so read should not fail
+	writer(): writer process keep try to write data ti a random selected file from given array
+		each time loop run  open first, so write should not fail
+	mainp(): main test program which create some reader and writer base on command line input and run them to prove monitor works
+		argv[1] is 's'/'m'/'l' which represent the length of data read/write
+		argv[2] is a int represent number of reader want to run
+		argv[3] is a int represent number of writer want to run
+
+test.c: test file operation work
+	printSuper(): print info of superblock and current directonary child array usage
+	printbit(): print current thread `s file been open/close and seek_ptr value for different file
+	printCurDir(): print info for current directonary
+		name for all child and type
+	printNext(): print next free inode block and data block nukber
+	getLine(): read nextline input 
+	init(): initialized the test thread infor
+	run(): run command base on user input
+	main(): keep ask for input and run command base on user input

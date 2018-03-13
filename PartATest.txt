@@ -1,0 +1,59 @@
+Part A Test Design
+	make
+	./test
+	input a command
+	command format:
+		mkdir 	string(name of directory)
+		cd		string(name of directory)
+		rmdir		string(name of directory)
+		open	string(name of file)
+		close	int(fd of file want to close, which print by open)
+		read	int(fd of file want to close, which print by open)
+		write	int(fd of file want to close, which print by open)
+				data
+		seek	int (fd of file want to close, which print by open)
+				int (seek point, if is larger than file size, it will set to end of file)
+		rm		string(name of file)
+		ls
+		quit
+	the result will print on the screen
+	the ls command will show current directory usage
+	the quit command the quit the test
+	the close/read/write/seek command need a int as input, which is the fd print after calling open command
+
+	
+Test Result
+
+	ls
+	We are in: /
+	mkdir a1
+	ls
+	We are in: /
+			a1      1
+	cd a1
+	open b1
+	Descriptor for b1: 3
+	write 3 hello
+	read 3
+	hello
+	seek 3 1
+	read 3
+	ello
+	mkdir a2
+	ls
+	We are in: a1
+			b1      0
+			a2      1
+	rmdir a2
+	ls
+	We are in: a1
+			b1      0
+	close 3
+	read 3
+	ERR(read): file is closed
+	seek 3 2
+	ERR(seek): file is closed
+	write 3 olleh
+	ERR(write): file is closed
+	quit  
+

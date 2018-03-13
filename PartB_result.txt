@@ -1,0 +1,819 @@
+/*
+Names: Yukun Li, Yuhan Hu 
+NSID : yul040, yuh347
+Std# : 11173592, 11212253
+Group: group07
+*/
+
+From the bottom line in Sample output, we can know short dataLen, 2 readers, 1 writer, small BLOCK_SIZE use time as below
+Read Wait Time: 374
+Write Wait Time: 10
+
+Complete result for each condition would show in PartB.report.pdf
+
+*******************Sample output from console********************
+yuh347@peon15:~/CMPT332/asgn/asgn4> ./final s 2 1 s >> PartB.result.txt
+processes created
+0: open dfile
+Num threads running: 1
+Num threads running: 0
+Num threads running: 1
+Num threads running: 0
+0: read dfile
+Num threads running: 1
+Num threads running: 0
+Num threads running: 1
+Num threads running: 0
+0: close dfile
+1: open bfile
+Num threads running: 1
+Num threads running: 0
+Num threads running: 1
+Num threads running: 0
+1: read bfile
+Num threads running: 1
+Num threads running: 0
+Num threads running: 1
+Num threads running: 0
+1: close bfile
+10: open bfile
+10: write bfile
+Num threads running: 1
+Num threads running: 0
+Num threads running: 1
+Num threads running: 0
+10: close bfile
+101: rmdir bdir
+Direct bdir doesn't exist
+102: rmdir bdir
+Direct bdir doesn't exist
+1: open cfile
+Num threads running: 1
+Num threads running: 0
+Num threads running: 1
+Num threads running: 0
+1: read cfile
+Num threads running: 1
+Num threads running: 0
+Num threads running: 1
+Num threads running: 0
+1: close cfile
+0: open dfile
+0: read dfile
+Num threads running: 1
+Num threads running: 0
+Num threads running: 1
+Num threads running: 0
+0: close dfile
+0: open afile
+Num threads running: 1
+Num threads running: 0
+Num threads running: 1
+Num threads running: 0
+0: read afile
+Num threads running: 1
+Num threads running: 0
+Num threads running: 1
+Num threads running: 0
+0: close afile
+1: open afile
+1: read afile
+Num threads running: 1
+Num threads running: 0
+Num threads running: 1
+Num threads running: 0
+1: close afile
+0: open dfile
+0: read dfile
+Num threads running: 1
+Num threads running: 0
+Num threads running: 1
+Num threads running: 0
+0: close dfile
+1: open dfile
+1: read dfile
+Num threads running: 1
+Num threads running: 0
+Num threads running: 1
+Num threads running: 0
+1: close dfile
+1: open cfile
+1: read cfile
+Num threads running: 1
+Num threads running: 0
+Num threads running: 1
+Num threads running: 0
+1: close cfile
+0: open cfile
+0: read cfile
+Num threads running: 1
+Num threads running: 0
+Num threads running: 1
+Num threads running: 0
+0: close cfile
+0: open dfile
+0: read dfile
+Num threads running: 1
+Num threads running: 0
+Num threads running: 1
+Num threads running: 0
+0: close dfile
+1: open bfile
+1: read bfile
+Num threads running: 1
+Num threads running: 0
+Num threads running: 1
+Num threads running: 0
+1: ssssssssssssssss
+1: close bfile
+1: open cfile
+1: read cfile
+Num threads running: 1
+Num threads running: 0
+Num threads running: 1
+Num threads running: 0
+1: close cfile
+1: open bfile
+1: read bfile
+Num threads running: 1
+Num threads running: 0
+Num threads running: 1
+Num threads running: 0
+1: ssssssssssssssss
+1: close bfile
+1: open bfile
+1: read bfile
+Num threads running: 1
+Num threads running: 0
+Num threads running: 1
+Num threads running: 0
+1: ssssssssssssssss
+1: close bfile
+1: open dfile
+1: read dfile
+Num threads running: 1
+Num threads running: 0
+Num threads running: 1
+Num threads running: 0
+1: close dfile
+0: open bfile
+0: read bfile
+Num threads running: 1
+Num threads running: 0
+Num threads running: 1
+Num threads running: 0
+0: ssssssssssssssss
+0: close bfile
+0: open bfile
+0: read bfile
+Num threads running: 1
+Num threads running: 0
+Num threads running: 1
+Num threads running: 0
+0: ssssssssssssssss
+0: close bfile
+1: open afile
+1: read afile
+Num threads running: 1
+Num threads running: 0
+Num threads running: 1
+Num threads running: 0
+1: close afile
+102: cd ddir
+Direct ddir doesn't exist
+1: open cfile
+1: read cfile
+Num threads running: 1
+Num threads running: 0
+Num threads running: 1
+Num threads running: 0
+1: close cfile
+0: open cfile
+0: read cfile
+Num threads running: 1
+Num threads running: 0
+Num threads running: 1
+Num threads running: 0
+0: close cfile
+0: open afile
+0: read afile
+Num threads running: 1
+Num threads running: 0
+Num threads running: 1
+Num threads running: 0
+0: close afile
+101: mkdir bdir
+Num threads running: 1
+Num threads running: 0
+Num threads running: 1
+Num threads running: 0
+1: open afile
+1: read afile
+Num threads running: 1
+Num threads running: 0
+Num threads running: 1
+Num threads running: 0
+1: close afile
+1: open bfile
+1: read bfile
+Num threads running: 1
+Num threads running: 0
+Num threads running: 1
+Num threads running: 0
+1: ssssssssssssssss
+1: close bfile
+0: open afile
+0: read afile
+Num threads running: 1
+Num threads running: 0
+Num threads running: 1
+Num threads running: 0
+0: close afile
+1: open afile
+1: read afile
+Num threads running: 1
+Num threads running: 0
+Num threads running: 1
+Num threads running: 0
+1: close afile
+0: open cfile
+0: read cfile
+Num threads running: 1
+Num threads running: 0
+Num threads running: 1
+Num threads running: 0
+0: close cfile
+0: open bfile
+0: read bfile
+Num threads running: 1
+Num threads running: 0
+Num threads running: 1
+Num threads running: 0
+0: ssssssssssssssss
+0: close bfile
+102: mkdir ..
+Num threads running: 1
+Num threads running: 0
+Num threads running: 1
+Num threads running: 0
+0: open bfile
+0: read bfile
+Num threads running: 1
+Num threads running: 0
+Num threads running: 1
+Num threads running: 0
+0: ssssssssssssssss
+0: close bfile
+1: open dfile
+1: read dfile
+Num threads running: 1
+Num threads running: 0
+Num threads running: 1
+Num threads running: 0
+1: close dfile
+1: open afile
+1: read afile
+Num threads running: 1
+Num threads running: 0
+Num threads running: 1
+Num threads running: 0
+1: close afile
+0: open cfile
+0: read cfile
+Num threads running: 1
+Num threads running: 0
+Num threads running: 1
+Num threads running: 0
+0: close cfile
+1: open afile
+1: read afile
+Num threads running: 1
+Num threads running: 0
+Num threads running: 1
+Num threads running: 0
+1: close afile
+1: open cfile
+1: read cfile
+Num threads running: 1
+Num threads running: 0
+Num threads running: 1
+Num threads running: 0
+1: close cfile
+0: open afile
+0: read afile
+Num threads running: 1
+Num threads running: 0
+Num threads running: 1
+Num threads running: 0
+0: close afile
+0: open dfile
+0: read dfile
+Num threads running: 1
+Num threads running: 0
+Num threads running: 1
+Num threads running: 0
+0: close dfile
+1: open dfile
+1: read dfile
+Num threads running: 1
+Num threads running: 0
+Num threads running: 1
+Num threads running: 0
+1: close dfile
+1: open afile
+1: read afile
+Num threads running: 1
+Num threads running: 0
+Num threads running: 1
+Num threads running: 0
+1: close afile
+0: open afile
+0: read afile
+Num threads running: 1
+Num threads running: 0
+Num threads running: 1
+Num threads running: 0
+0: close afile
+0: open afile
+0: read afile
+Num threads running: 1
+Num threads running: 0
+Num threads running: 1
+Num threads running: 0
+0: close afile
+1: open cfile
+1: read cfile
+Num threads running: 1
+Num threads running: 0
+Num threads running: 1
+Num threads running: 0
+1: close cfile
+1: open dfile
+1: read dfile
+Num threads running: 1
+Num threads running: 0
+Num threads running: 1
+Num threads running: 0
+1: close dfile
+1: open cfile
+1: read cfile
+Num threads running: 1
+Num threads running: 0
+Num threads running: 1
+Num threads running: 0
+1: close cfile
+0: open cfile
+0: read cfile
+Num threads running: 1
+Num threads running: 0
+Num threads running: 1
+Num threads running: 0
+0: close cfile
+1: open bfile
+1: read bfile
+Num threads running: 1
+Num threads running: 0
+Num threads running: 1
+Num threads running: 0
+1: ssssssssssssssss
+1: close bfile
+0: open cfile
+0: read cfile
+Num threads running: 1
+Num threads running: 0
+Num threads running: 1
+Num threads running: 0
+0: close cfile
+0: open afile
+0: read afile
+Num threads running: 1
+Num threads running: 0
+Num threads running: 1
+Num threads running: 0
+0: close afile
+0: open afile
+0: read afile
+Num threads running: 1
+Num threads running: 0
+Num threads running: 1
+Num threads running: 0
+0: close afile
+1: open afile
+1: read afile
+Num threads running: 1
+Num threads running: 0
+Num threads running: 1
+Num threads running: 0
+1: close afile
+0: open bfile
+0: read bfile
+Num threads running: 1
+Num threads running: 0
+Num threads running: 1
+Num threads running: 0
+0: ssssssssssssssss
+0: close bfile
+102: cd ddir
+Direct ddir doesn't exist
+0: open afile
+0: read afile
+Num threads running: 1
+Num threads running: 0
+Num threads running: 1
+Num threads running: 0
+0: close afile
+0: open dfile
+0: read dfile
+Num threads running: 1
+Num threads running: 0
+Num threads running: 1
+Num threads running: 0
+0: close dfile
+0: open bfile
+0: read bfile
+Num threads running: 1
+Num threads running: 0
+Num threads running: 1
+Num threads running: 0
+0: ssssssssssssssss
+0: close bfile
+1: open bfile
+1: read bfile
+Num threads running: 1
+Num threads running: 0
+Num threads running: 1
+Num threads running: 0
+1: ssssssssssssssss
+1: close bfile
+10: open bfile
+10: write bfile
+Num threads running: 1
+Num threads running: 0
+Num threads running: 1
+Num threads running: 0
+10: close bfile
+1: open dfile
+1: read dfile
+Num threads running: 1
+Num threads running: 0
+Num threads running: 1
+Num threads running: 0
+1: close dfile
+0: open bfile
+0: read bfile
+Num threads running: 1
+Num threads running: 0
+Num threads running: 1
+Num threads running: 0
+0: ssssssssssssssss
+0: close bfile
+0: open cfile
+0: read cfile
+Num threads running: 1
+Num threads running: 0
+Num threads running: 1
+Num threads running: 0
+0: close cfile
+1: open cfile
+1: read cfile
+Num threads running: 1
+Num threads running: 0
+Num threads running: 1
+Num threads running: 0
+1: close cfile
+0: open dfile
+0: read dfile
+Num threads running: 1
+Num threads running: 0
+Num threads running: 1
+Num threads running: 0
+0: close dfile
+101: rmdir adir
+Direct adir doesn't exist
+1: open bfile
+1: read bfile
+Num threads running: 1
+Num threads running: 0
+Num threads running: 1
+Num threads running: 0
+1: ssssssssssssssss
+1: close bfile
+1: open dfile
+1: read dfile
+Num threads running: 1
+Num threads running: 0
+Num threads running: 1
+Num threads running: 0
+1: close dfile
+1: open afile
+1: read afile
+Num threads running: 1
+Num threads running: 0
+Num threads running: 1
+Num threads running: 0
+1: close afile
+1: open dfile
+1: read dfile
+Num threads running: 1
+Num threads running: 0
+Num threads running: 1
+Num threads running: 0
+1: close dfile
+101: mkdir adir
+Num threads running: 1
+Num threads running: 0
+Num threads running: 1
+Num threads running: 0
+0: open cfile
+0: read cfile
+Num threads running: 1
+Num threads running: 0
+Num threads running: 1
+Num threads running: 0
+0: close cfile
+0: open cfile
+0: read cfile
+Num threads running: 1
+Num threads running: 0
+Num threads running: 1
+Num threads running: 0
+0: close cfile
+1: open bfile
+1: read bfile
+Num threads running: 1
+Num threads running: 0
+Num threads running: 1
+Num threads running: 0
+1: ssssssssssssssss
+1: close bfile
+10: open dfile
+10: write dfile
+Num threads running: 1
+Num threads running: 0
+Num threads running: 1
+Num threads running: 0
+10: close dfile
+0: open afile
+0: read afile
+Num threads running: 1
+Num threads running: 0
+Num threads running: 1
+Num threads running: 0
+0: close afile
+0: open bfile
+0: read bfile
+Num threads running: 1
+Num threads running: 0
+Num threads running: 1
+Num threads running: 0
+0: ssssssssssssssss
+0: close bfile
+1: open bfile
+1: read bfile
+Num threads running: 1
+Num threads running: 0
+Num threads running: 1
+Num threads running: 0
+1: ssssssssssssssss
+1: close bfile
+1: open cfile
+1: read cfile
+Num threads running: 1
+Num threads running: 0
+Num threads running: 1
+Num threads running: 0
+1: close cfile
+1: open afile
+1: read afile
+Num threads running: 1
+Num threads running: 0
+Num threads running: 1
+Num threads running: 0
+1: close afile
+0: open dfile
+0: read dfile
+Num threads running: 1
+Num threads running: 0
+Num threads running: 1
+Num threads running: 0
+0: ssssssssssssssss
+0: close dfile
+1: open dfile
+1: read dfile
+Num threads running: 1
+Num threads running: 0
+Num threads running: 1
+Num threads running: 0
+1: ssssssssssssssss
+1: close dfile
+1: open dfile
+1: read dfile
+Num threads running: 1
+Num threads running: 0
+Num threads running: 1
+Num threads running: 0
+1: ssssssssssssssss
+1: close dfile
+1: open dfile
+1: read dfile
+Num threads running: 1
+Num threads running: 0
+Num threads running: 1
+Num threads running: 0
+1: ssssssssssssssss
+1: close dfile
+0: open afile
+0: read afile
+Num threads running: 1
+Num threads running: 0
+Num threads running: 1
+Num threads running: 0
+0: close afile
+1: open bfile
+1: read bfile
+Num threads running: 1
+Num threads running: 0
+Num threads running: 1
+Num threads running: 0
+1: ssssssssssssssss
+1: close bfile
+1: open dfile
+1: read dfile
+Num threads running: 1
+Num threads running: 0
+Num threads running: 1
+Num threads running: 0
+1: ssssssssssssssss
+1: close dfile
+0: open cfile
+0: read cfile
+Num threads running: 1
+Num threads running: 0
+Num threads running: 1
+Num threads running: 0
+0: close cfile
+0: open cfile
+0: read cfile
+Num threads running: 1
+Num threads running: 0
+Num threads running: 1
+Num threads running: 0
+0: close cfile
+0: open bfile
+0: read bfile
+Num threads running: 1
+Num threads running: 0
+Num threads running: 1
+Num threads running: 0
+0: ssssssssssssssss
+0: close bfile
+1: open dfile
+1: read dfile
+Num threads running: 1
+Num threads running: 0
+Num threads running: 1
+Num threads running: 0
+1: ssssssssssssssss
+1: close dfile
+1: open cfile
+1: read cfile
+Num threads running: 1
+Num threads running: 0
+Num threads running: 1
+Num threads running: 0
+1: close cfile
+0: open dfile
+0: read dfile
+Num threads running: 1
+Num threads running: 0
+Num threads running: 1
+Num threads running: 0
+0: ssssssssssssssss
+0: close dfile
+0: open afile
+0: read afile
+Num threads running: 1
+Num threads running: 0
+Num threads running: 1
+Num threads running: 0
+0: close afile
+0: open afile
+0: read afile
+Num threads running: 1
+Num threads running: 0
+Num threads running: 1
+Num threads running: 0
+0: close afile
+0: open dfile
+0: read dfile
+Num threads running: 1
+Num threads running: 0
+Num threads running: 1
+Num threads running: 0
+0: ssssssssssssssss
+0: close dfile
+0: open bfile
+0: read bfile
+Num threads running: 1
+Num threads running: 0
+Num threads running: 1
+Num threads running: 0
+0: ssssssssssssssss
+0: close bfile
+1: open cfile
+1: read cfile
+Num threads running: 1
+Num threads running: 0
+Num threads running: 1
+Num threads running: 0
+1: close cfile
+1: open afile
+1: read afile
+Num threads running: 1
+Num threads running: 0
+Num threads running: 1
+Num threads running: 0
+1: close afile
+1: open afile
+1: read afile
+Num threads running: 1
+Num threads running: 0
+Num threads running: 1
+Num threads running: 0
+1: close afile
+0: open bfile
+0: read bfile
+Num threads running: 1
+Num threads running: 0
+Num threads running: 1
+Num threads running: 0
+0: ssssssssssssssss
+0: close bfile
+1: open bfile
+1: read bfile
+Num threads running: 1
+Num threads running: 0
+Num threads running: 1
+Num threads running: 0
+1: ssssssssssssssss
+1: close bfile
+0: open afile
+0: read afile
+Num threads running: 1
+Num threads running: 0
+Num threads running: 1
+Num threads running: 0
+0: close afile
+1: open cfile
+1: read cfile
+Num threads running: 1
+Num threads running: 0
+Num threads running: 1
+Num threads running: 0
+1: close cfile
+0: open cfile
+0: read cfile
+Num threads running: 1
+Num threads running: 0
+Num threads running: 1
+Num threads running: 0
+0: close cfile
+0: open afile
+0: read afile
+Num threads running: 1
+Num threads running: 0
+Num threads running: 1
+Num threads running: 0
+0: close afile
+102: rmdir ..
+Num threads running: 1
+Num threads running: 0
+Num threads running: 1
+Num threads running: 0
+101: cd ddir
+Direct ddir doesn't exist
+102: mkdir bdir
+ERR: mkdir[bdir] exists
+102: cd bdir
+101: mkdir ddir
+Num threads running: 1
+Num threads running: 0
+Num threads running: 1
+Num threads running: 0
+101: cd bdir
+101: cd cdir
+Direct cdir doesn't exist
+102: cd ..
+101: cd ..
+102: rmdir adir
+Num threads running: 1
+Num threads running: 0
+Num threads running: 1
+Num threads running: 0
+102: rmdir ..
+Direct .. doesn't exist
+102: cd ddir
+Read Wait Time: 374
+Write Wait Time: 10
+
+exiting threads
